@@ -5,7 +5,6 @@ import os
 import sys
 import time
 import uuid
-import base64
 import pickle
 import urllib.request
 from multiprocessing import Pool
@@ -51,8 +50,8 @@ def send_jpg(frame_jpg, frame_count):
             PartitionKey=str(uuid.uuid4())
         )
         print(response)
-    except Exception as e:
-        print(e)
+    except Exception as ex:
+        print(ex)
 
 
 def main():
@@ -72,7 +71,6 @@ def main():
 
     print("Capturing from '{}' at a rate of 1 every {} frames...".format(ip_cam_url, capture_rate))
     stream = urllib.request.urlopen(ip_cam_url)
-    
     stream_bytes = bytes([])
     pool = Pool(processes=3)
 
